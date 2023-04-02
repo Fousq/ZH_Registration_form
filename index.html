@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field input {
+            width: 200px;
+        }
+
+        button {
+            width: 70px;
+            height: 20px;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <form id="registration">
+        <div class="input-field">
+            <label for="username">Your username</label>
+            <input id="username" placeholder="Enter here" required>
+        </div>
+        <div class="input-field">
+            <label for="password">Your password</label>
+            <input type="password" id="password" required>
+        </div>
+        <div class="input-field">
+            <label for="email">Your email</label>
+            <input type="email" id="email" placeholder="example@exmaple.com" required>
+        </div>
+        <button>Send</button>
+    </form>
+
+    <script>
+        registrationForm = document.getElementById("registration");
+        registrationForm.onsubmit = (event) => {
+            event.preventDefault();
+            inputs = registrationForm.elements;
+            username = inputs["username"].value;
+            password = inputs["password"].value;
+            email = inputs["email"].value;
+            registrationObj = {
+                username: username,
+                password: password,
+                email: email
+            }
+            sessionStorage.setItem(username + "@" + password, JSON.stringify(registrationObj));
+        }
+    </script>
+</body>
+</html>
